@@ -1,0 +1,24 @@
+Config { font = "-misc-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = TopW L 90
+       , lowerOnStart = True
+       , commands = [-- Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    --, Run Network "eth1" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    --  Run MultiCpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                      Run Memory ["-t","Mem: <usedratio>%"] 10
+                    --, Run Swap [] 10
+					, Run Date "%a %_d %b %Y %H:%M:%S" "date" 10
+					, Run Battery ["-t","Batt: <left>%","-L","5","-H","95","--low","red","--normal","green"] 10
+					--, Run CoreTemp ["-t","Temp:<core0>|<core1>C","-L","40","-H","60","-l","lightblue","-n","gray90","-h","red"] 50
+					, Run Com "/home/bill/.config/xmobar/getcoretemp.sh" [] "coreTemp" 10
+					--, Run Com "/home/bill/.config/xmobar/get_master_volume.sh" [] "default:Master" 10
+					, Run Volume "default" "Master" [] 10
+					--, Run Com "lsb_release" ["-s","-d"] "" 36000
+					, Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%battery% | %coreTemp% | %default:Master% } %StdinReader% { <fc=#ee9a00>%date%</fc>"
+       }
+-- vim: set filetype=haskell :

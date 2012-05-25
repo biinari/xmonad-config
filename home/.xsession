@@ -1,0 +1,2 @@
+~/.xmonad/start.sh
+xmonad
